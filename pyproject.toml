@@ -1,0 +1,11 @@
+[project]
+name = "mxmh"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "altair>=5.5.0",
+    "polars>=1.17.1",
+    "streamlit>=1.41.0",
+]
