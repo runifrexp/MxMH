@@ -1,4 +1,7 @@
 .python-version
 .venv
 hello.py
-pyproject.toml
+uv.lock
+__pycache__/
+__init__.py
+.DS_Store
