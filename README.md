@@ -1,75 +1,69 @@
-# MxMH 
+# MxMH - Music x Mental Health 🎵🧠
 
 ## Descrizione
-Questo progetto analizza i dati di un sondaggio per comprendere l'impatto della musica sul benessere psicologico. Attraverso tecniche di pulizia e analisi dei dati, abbiamo esplorato come la musica influisce su ansia, depressione e insonnia.
+Questo progetto analizza i dati di un sondaggio per comprendere l'impatto della musica sulla condizione psichica di un individuo. In particolare le condizioni analizzate sono ansia, depressione, insonnia e disturbo ossessivo compulsivo.
 
 ---
 
 ## Dataset
-**`mxmh_survey_results.csv`**
+Il dataset utilizzato è **`mxmh_survey_results.csv`**, (https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results).
+Il preprocessing dei dati è molto semplice e veloce (utilizzabilità 10 da Kaggle), in quanto è necessario soltanto specificare i tipi di alcune variabili numeriche 
+e rimuovere un outlier (è stata rimossa l'unità statistica dell'utente di 89 anni e con 24 ore di ascolto per giorno).  
+Nel link si trova tutto ciò che è necessario per la comprensione del dataset: dalla spiegazione delle variabili, al metodo di raccolta dei dati.  
+In seguito verranno elencate le variabili principali per evitare di dover leggere la documentazione del dataset per capire l'analisi dati MxMH.
 
-### Variabili principali:
-- `Age`: Età dei partecipanti.
-- `Primary streaming service`: Piattaforma di streaming musicale principale.
+### Variabili utilizzate:
+- `Age`: Età dell'utente.
+- `Primary streaming service`: Piattaforma di streaming musicale principale (Spotify, Pandora, Youtube Music, Apple Music, I do not use a streaming service, Other streaming service).
 - `Hours per day`: Ore dedicate all'ascolto della musica ogni giorno.
-- `Fav genre`: Genere musicale preferito.
-- `Anxiety`, `Depression`, `Insomnia`: Valori numerici che indicano la gravita di questi problemi psicologici.
-- `Music effects`: Effetto percepito della musica sul benessere (Migliora, Peggiora, Nessun effetto).
+- `Fav genre`: Genere musicale preferito. Rilevati in tutto 16 generi: Jazz, K-pop, Latin, Lo-fi, Metal, Pop, R&B, Rap, Rock, Video Game Music, Classical, Country, EDM, Folk, Gospel, Hip-Hop
+- `Frequency{genre}`: Frequenza di ascolto (Never, Rarely, Sometimes, Very frequently) dei 16 generi di musica rilevati.
+- `Anxiety`, `Depression`, `Insomnia`, `OCD`: Valori numerici interi da 0 a 10 che quantificano le condizioni psichiche di ansia, depressione, insonnia e disturbo ossessivo compulsivo.
+- `Music effects`: Effetto percepito della musica sul benessere (Improve, No effect, Worsen).
 
 ---
 
 ## Data Cleaning
-Il file `data_cleaning.py` contiene la logica per:
-1. Rimuovere valori nulli o incoerenti.
-2. Normalizzare le variabili numeriche.
-3. Gestire le variabili categoriche (ad esempio, encoding delle preferenze di genere musicale).
-4. Filtrare dati fuori dal range atteso (es: ore di ascolto giornaliere > 24).
+Il file `data_cleaning.py` contiene la funzione **`get_data()`** che si occupa di:
+1. Importare i dati dal file csv.
+2. Specificare i tipi di alcune variabili numeriche che avevano difficoltà ad esser lette.
+3. Rimuovere l'outlier sopracitato.
 
-Esempio di operazioni applicate:
-```python
-# Rimuove valori nulli
-survey_data.dropna(inplace=True)
-
-# Encoding di variabili categoriche
-survey_data['Fav genre'] = survey_data['Fav genre'].astype('category').cat.codes
-```
+In ogni script i dati vengono importati utilizzando la funzione **`get_data()`** del modulo `data_cleaning` per non doverli importare in ogni script separatamente.
 
 ---
 
 ## Librerie Usate
-- **[Polars](https://www.pola.rs/)**: Per manipolazione dei dati ad alta efficienza.
+- **[Polars](https://www.pola.rs/)**: Per la manipolazione dei dati.
 - **[Streamlit](https://streamlit.io/)**: Per creare un'interfaccia utente interattiva per visualizzare i risultati.
+- **[Scikit-learn](https://scikit-learn.org/)**: Per poter fare la regressione lineare multipla (e molte altre cose...). (affrontata nel corso di Intelligenza Artificiale a Ingegneria Informatica)
+- **[Altair](https://altair-viz.github.io/)**: Per creare grafici interattivi.
+- **[NumPy](https://numpy.org/)**: Per calcolare correlazioni.
+- **[Plotly](https://plotly.com/python/)**: Per il grafico 3D.
 
 ---
 
 ## Come Usare il Codice
 
-1. **Requisiti:**
-   - Python 3.8+
-   - Librerie elencate in `pyproject.toml`.
-
-2. **Setup Ambiente:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Esecuzione:**
-   - **Pulizia Dati:** Esegui `data_cleaning.py`:
-     ```bash
-     python data_cleaning.py
-     ```
+L'uso di uv consente di eseguire facilmente il codice senza dover attivare manualmente il virtual environment. Questo strumento permette di avviare direttamente l'applicazione o gli script associati all'ambiente virtuale configurato.
+**Esecuzione:**
    - **Visualizzazione:** Avvia l'app Streamlit:
      ```bash
-     streamlit run hello.py
+     uv run streamlit run Introduzione.py
      ```
 
 ---
 
 ## Analisi
-L'analisi ha rivelato:
-1. I generi musicali preferiti variano significativamente con l'età e l'uso delle piattaforme di streaming.
-2. La musica è percepita come un miglioramento per ansia, depressione e insonnia nel 70% dei partecipanti.
-3. Gli effetti della musica sembrano dipendere dal tempo di ascolto giornaliero e dal genere preferito.
+Nella pagina `Introduzione.py` viene fornita un'overview dell'analisi e di alcuni riferimenti scientifici. 
 
-Un modello di regressione è stato utilizzato per prevedere lo stato psicologico basandosi sui dati del sondaggio.
+
+---
+
+## Note
+Il modello di regressione utilizzato non è stato sottoposto a nessun test di significatività. È soltanto un punto di partenza per ulteriori analisi future.
+
+
+
+
 
