@@ -55,7 +55,7 @@ L'utilizzo di **uv** consente di eseguire il codice in modo semplice, senza la n
      ```
 
 2. **Esecuzione:**
-   - **Visualizzazione:** Avvia l'app Streamlit:
+   - Avviare l'app Streamlit:
      ```bash
      uv run streamlit run Introduzione.py
      ```
