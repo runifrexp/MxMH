@@ -41,16 +41,25 @@ In ogni script i dati vengono importati utilizzando la funzione **`get_data()`**
 - **[NumPy](https://numpy.org/)**: Per calcolare correlazioni.
 - **[Plotly](https://plotly.com/python/)**: Per il grafico 3D.
 
+
 ---
 
 ## Come Usare il Codice
 
-L'uso di uv consente di eseguire facilmente il codice senza dover attivare manualmente il virtual environment. Questo strumento permette di avviare direttamente l'applicazione o gli script associati all'ambiente virtuale configurato.
-**Esecuzione:**
+L'utilizzo di **uv** consente di eseguire il codice in modo semplice, senza la necessità di attivare manualmente il virtual environment. Questo strumento permette di avviare direttamente l'applicazione o gli script associati al progetto.
+
+1. **Scaricare la repository:**
+   - Clonare la repository sul proprio PC:
+     ```bash
+     git clone https://github.com/runifrexp/MxMH.git
+     ```
+
+2. **Esecuzione:**
    - **Visualizzazione:** Avvia l'app Streamlit:
      ```bash
      uv run streamlit run Introduzione.py
      ```
+
 
 ---
 
@@ -61,7 +70,7 @@ Nella pagina `Introduzione.py` viene fornita un'overview dell'analisi e di alcun
 ---
 
 ## Note
-Il modello di regressione utilizzato non è stato sottoposto a nessun test di significatività. È soltanto un punto di partenza per ulteriori analisi future.
+Il modello di regressione utilizzato nell'analisi incrociata non è stato sottoposto a nessun test di significatività. È soltanto un punto di partenza per ulteriori analisi future.
 
 
 
