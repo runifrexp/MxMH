@@ -29,7 +29,7 @@ Il file `data_cleaning.py` contiene la funzione **`get_data()`** che si occupa d
 2. Specificare i tipi di alcune variabili numeriche che avevano difficoltà ad esser lette.
 3. Rimuovere l'outlier sopracitato.
 
-In ogni script i dati vengono importati utilizzando la funzione **`get_data()`** del modulo `data_cleaning` per non doverli importare in ogni script separatamente.
+In ogni script i dati preprocessati vengono importati utilizzando la funzione **`get_data()`** del modulo `data_cleaning` per non doverli sistemare ogni volta.
 
 ---
 
